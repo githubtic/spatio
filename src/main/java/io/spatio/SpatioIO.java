@@ -20,6 +20,7 @@ public class SpatioIO {
         String hash = SpatioHash.compute(latitude, longitude, now);
         try {
             String signature = signer.sign(hash);
+            // sauvegegarder vers le serveur sécurisé de certification
             return new SpatioCertificate(latitude, longitude, now, hash, signature);
         } catch (Exception e) {
             throw new RuntimeException("Erreur lors de la signature", e);

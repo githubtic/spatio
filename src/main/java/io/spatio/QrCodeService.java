@@ -19,4 +19,5 @@ public class QrCodeService {
             throw new RuntimeException("Erreur génération QR Code", e);
         }
     }
+
 }

@@ -3,6 +3,8 @@ package io.spatio;
 import javax.imageio.ImageIO;
 import java.awt.*;
         import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 
@@ -44,4 +46,11 @@ public class ImageUtil {
             throw new RuntimeException("Erreur sauvegarde PNG 100x100", e);
         }
     }
+    public byte[] toBytes( java.awt.image.RenderedImage image) throws IOException {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ImageIO.write(image, "png", baos);
+        byte[] imageBytes = baos.toByteArray();
+        return imageBytes;
+    }
+
 }
