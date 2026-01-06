@@ -31,4 +31,24 @@ public class SpatioCertificate {
         System.out.println("Hash        : " + hash);
         System.out.println("Signature   : " + signature);
     }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public Instant getTimestamp() {
+        return timestamp;
+    }
+
+    public String getHash() {
+        return hash;
+    }
+
+    public String getSignature() {
+        return signature;
+    }
 }

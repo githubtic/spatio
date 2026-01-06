@@ -9,3 +9,10 @@ il permet de générer un certificat crypté spatio temporelle
         <url>https://jitpack.io</url>
     </repository>
 </repositories>
+<dependencies>
+    <dependency>
+        <groupId>com.github.githubtic</groupId>
+        <artifactId>spatio</artifactId>
+        <version>v1.0.0</version>
+    </dependency>
+</dependencies>
