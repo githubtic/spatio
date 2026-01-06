@@ -1,5 +1,6 @@
 io\spatio\SpatioCertificate.class
 io\spatio\SpatioIO.class
+io\spatio\SpatioHash.class
+io\spatio\QrCodeService.class
 io\spatio\SpatioGeoLocator.class
 io\spatio\SpatioSigner.class
-io\spatio\SpatioHash.class
