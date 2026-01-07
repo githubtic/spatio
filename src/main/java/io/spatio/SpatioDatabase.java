@@ -16,6 +16,8 @@ public class SpatioDatabase {
 
 
         try (Connection connection = DriverManager.getConnection(DB_URL)) {
+
+
             Path dir = Paths.get(System.getProperty("user.home"), ".spatio");
             Files.createDirectories(dir);
 

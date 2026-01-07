@@ -8,4 +8,5 @@ io\spatio\ImageUtil.class
 io\spatio\QrCodeService.class
 io\spatio\SpatioGeoLocator.class
 io\spatio\SpatioSigner.class
+io\spatio\Utils.class
 io\spatio\storage\FileUtil.class
