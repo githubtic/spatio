@@ -72,11 +72,10 @@ public class SpatioDatabase {
             rs.next();
             return rs.getInt("nb");
         } catch (SQLException e) {
+
             throw new RuntimeException(e);
         }
-        finally {
-            return 0;
-        }
+
     }
         public SpatioCertificate getCertificateByHash(String hash) {
         try (Connection conn = DriverManager.getConnection(DB_URL)) {

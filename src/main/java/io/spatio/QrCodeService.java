@@ -1,12 +1,18 @@
 package io.spatio;
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.*;
+import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 
 import java.awt.image.BufferedImage;
 import java.text.DateFormat;
+import java.util.Base64;
 import java.util.Date;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.luben.zstd.Zstd;
+import com.github.luben.zstd.ZstdOutputStream;
+import com.github.luben.zstd.ZstdInputStream;
+import com.google.zxing.common.HybridBinarizer;
 
 public class QrCodeService {
 
@@ -33,5 +39,49 @@ public class QrCodeService {
         ImageUtil.saveAsPng100x100(qrCodeImage, "spatio-"+ certificat.getHash().substring(0,6)+".png");
         return qrCodeImage;
     }
+    public static String encodeToQr(Object obj) throws Exception {
+
+        ObjectMapper mapper = new ObjectMapper();
+
+        // 1. JSON
+        byte[] json = mapper.writeValueAsBytes(obj);
+
+        // 2. Compression Zstd
+        byte[] compressed = Zstd.compress(json);
+
+        // 3. Base64 URL-safe
+        return "SP1." + Base64.getUrlEncoder()
+                .withoutPadding()
+                .encodeToString(compressed);
+    }
+    public static <T> T decodeFromQr(String qr, Class<T> type) throws Exception {
+        ObjectMapper mapper = new ObjectMapper();
+        String payload = qr.substring(4); // enlever SP1.
+        byte[] compressed = Base64.getUrlDecoder().decode(payload);
+
+        byte[] json = com.github.luben.zstd.Zstd.decompress(compressed, 10_000);
+        return mapper.readValue(json, type);
+    }
+    public static String decode(BufferedImage qrImage) {
+        try {
+            LuminanceSource source =
+                    new BufferedImageLuminanceSource(qrImage);
+
+            BinaryBitmap bitmap =
+                    new BinaryBitmap(new HybridBinarizer(source));
+
+            Result result =
+                    new MultiFormatReader().decode(bitmap);
+
+            return result.getText(); // ✅ QR content
+
+        } catch (NotFoundException e) {
+            throw new IllegalArgumentException(
+                    "No QR code found in image", e
+            );
+        }
+    }
+
+
 
 }
