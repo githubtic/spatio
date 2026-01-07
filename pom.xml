@@ -5,7 +5,13 @@
     <groupId>io.spatio</groupId>
     <artifactId>spatio-io-lib</artifactId>
     <version>1.0.0</version>
+    <name>Spatio</name>
 
+    <description>Librairie Java de certification spatio temporelle</description>
+    <properties>
+        <maven.compiler.release>17</maven.compiler.release>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>org.json</groupId>
@@ -27,6 +33,11 @@
             <artifactId>sqlite-jdbc</artifactId>
             <version>3.45.1.0</version>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.json</groupId>-->
+<!--            <artifactId>json</artifactId>-->
+<!--            <version>20240303</version>-->
+<!--        </dependency>-->
     </dependencies>
     <build>
         <plugins>
