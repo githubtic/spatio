@@ -1,0 +1,11 @@
+io\spatio\SpatioCertificate.class
+io\spatio\storage\StorageService.class
+io\spatio\MainActivity.class
+io\spatio\SpatioIO.class
+io\spatio\SpatioDatabase.class
+io\spatio\SpatioHash.class
+io\spatio\ImageUtil.class
+io\spatio\QrCodeService.class
+io\spatio\SpatioGeoLocator.class
+io\spatio\SpatioSigner.class
+io\spatio\storage\FileUtil.class
